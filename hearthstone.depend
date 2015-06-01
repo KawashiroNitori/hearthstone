@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1433164266 source:d:\programs\2014\hearthstone\main.cpp
+	<iostream>
+	<vector>
+	<random>
+	<algorithm>
+	<ctime>
+	<cstdlib>
+	"Player.h"
+	"func.h"
+
+1433174077 d:\programs\2014\hearthstone\player.h
+	<vector>
+
+1433174102 source:d:\programs\2014\hearthstone\player.cpp
+	<vector>
+	"Player.h"
+
+1433173504 source:d:\programs\2014\hearthstone\func.cpp
+	<vector>
+	<random>
+	<iostream>
+	<ctime>
+	<cstring>
+	<algorithm>
+	"Player.h"
+
+1433171222 d:\programs\2014\hearthstone\func.h
+	<vector>
+
