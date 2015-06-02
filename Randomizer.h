@@ -12,7 +12,15 @@ private:
 	uniform_real_distribution<long double> __u_real;
 	normal_distribution<long double> __nor;
 	mt19937_64 __e; 
+	void __setRandomSeed();
 public:
+	randomizer();
+	randomizer(double aveg,double stddev);
+	randomizer(unsigned Min,unsigned Max);
+	unsigned getUniformInt();
+	long double getUniformReal();
+	long double getNormalReal();
+	int getShuffle(int i)
 
 }
 

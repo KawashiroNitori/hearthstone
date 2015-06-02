@@ -5,22 +5,32 @@
 #include <cstring>
 #include <algorithm>
 #include "Player.h"
+#include "Randomizer.h"
 using namespace std;
 
-uniform_real_distribution<long double> u(0,1);
-uniform_int_distribution<unsigned int> ui(0,100000000);
-mt19937_64 e(time(NULL));
-
-int Randing(int i)
+void generateUniformDistribution(randomizer& Random,vector<player> &v)
 {
-    return ui(e)%player::getPlayerAmount();
+	player tempPlayer=new player(Random.getUniformReal());
+	v.push_back(tempPlayer);
 }
 
-void match(vector<player> &v)
+void generateGaussianDistribution(randomizer& Random,vector<player> &v)
+{
+	player tempPlayer=new player(Random.getNormalReal());
+	v.push_back(tempPlayer);
+}
+
+void generateSpecialPlayer(randomizer &Random,vector<player> &v)
+{
+	player tempPlayer=new player(true,Random.getNormalReal());
+	v.push_back(tempPlayer);
+}
+
+void match(randomizer& Random,vector<player> &v)
 {
     int s;
     vector<player> g[12][3];
-    random_shuffle(v.begin(),v.end(),Randing);
+    random_shuffle(v.begin(),v.end(),Random.getShuffle);
 
     g[0][0]=v;
     for (int i=0;i<12;i++)
@@ -28,7 +38,7 @@ void match(vector<player> &v)
         {
             s=g[i][j].size()/2;
             for (int k=0;k<s;k++)
-                if (u(e) < player::getWinRate(g[i][j][k],g[i][j][k+s]))
+                if (Random.getUniformReal() < player::getWinRate(g[i][j][k],g[i][j][k+s]))
                 {
                     g[i][j][k].Win();
                     if (g[i][j][k].getWinCount()<12)
