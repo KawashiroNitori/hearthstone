@@ -8,6 +8,12 @@
 #include "Randomizer.h"
 using namespace std;
 
+int getShuffle(int i)
+{
+    static randomizer Random(0,(unsigned)i);
+    return Random.getUniformInt();
+}
+
 void generateUniformDistribution(randomizer &Random,vector<player> &v)
 {
 	player* tempPlayerPtr=new player(Random.getUniformReal());
@@ -36,7 +42,7 @@ void match(randomizer &Random,vector<player> &v)
 {
     int s;
     vector<player> g[12][3];
-    random_shuffle(v.begin(),v.end(),Random());
+    random_shuffle(v.begin(),v.end(),getShuffle);
 
     g[0][0]=v;
     for (int i=0;i<12;i++)

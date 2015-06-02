@@ -16,7 +16,7 @@
 	<vector>
 	"Player.h"
 
-1433222724 source:d:\programs\2014\hearthstone\func.cpp
+1433225001 source:d:\programs\2014\hearthstone\func.cpp
 	<vector>
 	<random>
 	<iostream>
@@ -26,14 +26,14 @@
 	"Player.h"
 	"Randomizer.h"
 
-1433222757 d:\programs\2014\hearthstone\func.h
+1433224907 d:\programs\2014\hearthstone\func.h
 	<vector>
 	"Randomizer.h"
 
-1433222806 d:\programs\2014\hearthstone\randomizer.h
+1433225104 d:\programs\2014\hearthstone\randomizer.h
 	<random>
 
-1433223655 source:d:\programs\2014\hearthstone\randomizer.cpp
+1433224861 source:d:\programs\2014\hearthstone\randomizer.cpp
 	<iostream>
 	<random>
 	<ctime>
