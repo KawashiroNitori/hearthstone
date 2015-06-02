@@ -14,60 +14,59 @@ int getShuffle(int i)
     return Random.getUniformInt()%i;
 }
 
-void generateUniformDistribution(randomizer &Random,vector<player> &v)
+void generateUniformDistribution(randomizer &Random,vector<player*> &v)
 {
-	player* tempPlayerPtr=new player(Random.getUniformReal());
-	player tempPlayer=*tempPlayerPtr;
-	delete(tempPlayerPtr);
+	player* tempPlayer=new player(Random.getUniformReal());
+	tempPlayer->printInfo();
 	v.push_back(tempPlayer);
 }
 
-void generateGaussianDistribution(randomizer &Random,vector<player> &v)
+void generateGaussianDistribution(randomizer &Random,vector<player*> &v)
 {
-	player* tempPlayerPtr=new player(Random.getNormalReal());
-	player tempPlayer=*tempPlayerPtr;
-	delete(tempPlayerPtr);
+	player* tempPlayer=new player(Random.getNormalReal());
+	tempPlayer->printInfo();
 	v.push_back(tempPlayer);
 }
 
-void generateSpecialPlayer(randomizer &Random,vector<player> &v)
+void generateSpecialPlayer(randomizer &Random,vector<player*> &v)
 {
-	player* tempPlayerPtr=new player(true,Random.getNormalReal());
-	player tempPlayer=*tempPlayerPtr;
-	delete(tempPlayerPtr);
+	player* tempPlayer=new player(true,Random.getNormalReal());
+	tempPlayer->printInfo();
 	v.push_back(tempPlayer);
 }
 
-void match(randomizer &Random,vector<player> &v)
+void match(randomizer &Random,vector<player*> &v)
 {
     int s;
-    vector<player> g[13][4];
-    //random_shuffle(v.begin(),v.end(),getShuffle);
+    vector<player*> g[13][4];
+    random_shuffle(v.begin(),v.end(),getShuffle);
 
     g[0][0]=v;
     for (int i=0;i<12;i++)
         for (int j=0;j<3;j++)
         {
+            //cout<<i<<' '<<j<<' '<<g[i][j].size()<<endl;
             s=g[i][j].size()/2;
             for (int k=0;k<s;k++)
-                if (Random.getUniformReal() < player::getWinRate(g[i][j][k],g[i][j][k+s]))
+                if (Random.getUniformReal() < player::getWinRate(*g[i][j][k],*g[i][j][k+s]))
                 {
-                    g[i][j][k].Win();
-                    if (g[i][j][k].getWinCount()<12)
+                    g[i][j][k]->Win();
+                    if (g[i][j][k]->getWinCount()<12)
                         g[i+1][j].push_back(g[i][j][k]);
-                    g[i][j][k+s].Lose();
-                    if (g[i][j][k+s].getLoseCount()<3)
+                    g[i][j][k+s]->Lose();
+                    if (g[i][j][k+s]->getLoseCount()<3)
                         g[i][j+1].push_back(g[i][j][k+s]);
                 }
                 else
                 {
-                    g[i][j][k+s].Win();
-                    if (g[i][j][k+s].getWinCount()<12)
+                    g[i][j][k+s]->Win();
+                    if (g[i][j][k+s]->getWinCount()<12)
                         g[i+1][j].push_back(g[i][j][k+s]);
-                    g[i][j][k].Lose();
-                    if (g[i][j][k].getLoseCount()<3)
+                    g[i][j][k]->Lose();
+                    if (g[i][j][k]->getLoseCount()<3)
                         g[i][j+1].push_back(g[i][j][k]);
                 }
+
             if (g[i][j].size()%2)
             {
                 if (g[i+1][j].size()%2)
@@ -78,7 +77,7 @@ void match(randomizer &Random,vector<player> &v)
         }
 }
 
-void printSpecialReport(vector<player> &v)
+void printSpecialReport(vector<player*> &v)
 {
     const int LENPROGESS=45;
 
@@ -88,17 +87,17 @@ void printSpecialReport(vector<player> &v)
 
     memset(speccount,0,sizeof(speccount));
     for (unsigned i=0;i<v.size();i++)
-        if (v[i].isSpecial())
+        if (v[i]->isSpecial())
         {
             spec_n++;
-            for (int j=0;j<v[i].getGameCount();j++)
-                speccount[v[i].getWinCount(j)]++;
+            for (int j=0;j<v[i]->getGameCount();j++)
+                speccount[v[i]->getWinCount(j)]++;
         }
 
-    cout<<"Special report:"<<endl;
+    cout<<endl<<"Special report in "<<v[0]->getGameCount()*spec_n<<" times:"<<endl;
     for (int i=0;i<=12;i++)
     {
-        percent=(double)((double)speccount[i]/(double)(v.size()*spec_n))*100;
+        percent=(double)((double)speccount[i]/(double)(v[0]->getGameCount()*spec_n))*100;
         if (i<10)
             cout<<' ';
         cout<<i<<" Wins:|";
@@ -112,16 +111,16 @@ void printSpecialReport(vector<player> &v)
     cout<<endl;
 }
 
-void printRangedDistribution(vector<player> &v)
+void printRangedDistribution(vector<player*> &v)
 {
     int se=0;
     long double select_n,powersum,psum,p,minlim,maxlim;
 
     while (++se)
     {
-        cout<<"Section "<<se<<":Input min limit and max limit(input \'q\' to quit):"<<endl;
+        cout<<"Section "<<se<<":Input min limit and max limit(input -1 to quit):"<<endl;
         cin>>minlim;
-        if (minlim=='q')
+        if (minlim==(long double)-1)
             break;
         cin>>maxlim;
 
@@ -130,12 +129,12 @@ void printRangedDistribution(vector<player> &v)
         psum=0;
         for (unsigned i=0;i<v.size();i++)
         {
-            p=(long double)v[i].getTotalWin()/v[i].getGameCount();
+            p=(long double)v[i]->getTotalWin()/v[i]->getGameCount();
             if (p>=minlim && p<=maxlim)
             {
                 select_n++;
-                powersum+=v[i].getPower();
-                psum+=(long double)v[i].getTotalWin()/(v[i].getTotalWin()+v[i].getTotalLose());
+                powersum+=v[i]->getPower();
+                psum+=(long double)v[i]->getTotalWin()/(v[i]->getTotalWin()+v[i]->getTotalLose());
             }
         }
         cout<<"\nP="<<psum/select_n<<"\nPower="<<powersum/select_n<<endl<<endl;

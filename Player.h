@@ -33,6 +33,7 @@ public:
     int getTotalLose();
     long double getPower();
     void countUpdate();
+    void printInfo();
     bool isSpecial();
     static long double getWinRate(player& a,player& b);
 };

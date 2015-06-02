@@ -6,11 +6,11 @@
 using namespace std;
 
 int getShuffle(int i);
-void generateUniformDistribution(randomizer &Random,vector<player> &v);
-void generateGaussianDistribution(randomizer &Random,vector<player> &v);
-void generateSpecialPlayer(randomizer &Random,vector<player> &v);
-void match(randomizer &Random,vector<player> &v);
-void printSpecialReport(vector<player> &v);
-void printRangedDistribution(vector<player> &v);
+void generateUniformDistribution(randomizer &Random,vector<player*> &v);
+void generateGaussianDistribution(randomizer &Random,vector<player*> &v);
+void generateSpecialPlayer(randomizer &Random,vector<player*> &v);
+void match(randomizer &Random,vector<player*> &v);
+void printSpecialReport(vector<player*> &v);
+void printRangedDistribution(vector<player*> &v);
 
 #endif // FUNC_H_INCLUDED

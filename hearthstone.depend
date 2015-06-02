@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1433227156 source:d:\programs\2014\hearthstone\main.cpp
+1433248132 source:d:\programs\2014\hearthstone\main.cpp
 	<iostream>
 	<vector>
 	<random>
@@ -10,14 +10,15 @@
 	"func.h"
 	"Randomizer.h"
 
-1433221277 d:\programs\2014\hearthstone\player.h
+1433244793 d:\programs\2014\hearthstone\player.h
 	<vector>
 
-1433222781 source:d:\programs\2014\hearthstone\player.cpp
+1433247205 source:d:\programs\2014\hearthstone\player.cpp
 	<vector>
+	<iostream>
 	"Player.h"
 
-1433227562 source:d:\programs\2014\hearthstone\func.cpp
+1433247986 source:d:\programs\2014\hearthstone\func.cpp
 	<vector>
 	<random>
 	<iostream>
@@ -27,7 +28,7 @@
 	"Player.h"
 	"Randomizer.h"
 
-1433225773 d:\programs\2014\hearthstone\func.h
+1433244629 d:\programs\2014\hearthstone\func.h
 	<vector>
 	"Randomizer.h"
 

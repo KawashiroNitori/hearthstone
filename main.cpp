@@ -13,7 +13,7 @@ int main()
 {
     int n,m,mode,spec_n;
     double stddev,spec_aver,spec_std;
-    vector<player> v;
+    vector<player*> v;
     cout<<"Input normal amount and repeat times:"<<endl;
     cin>>n>>m;
     cout<<"Input number to choose the distributing mode:\n==================================================\n1:Uniform Distribution\n2:Gaussian Distribution"<<endl;
@@ -55,13 +55,18 @@ int main()
             generateSpecialPlayer(SpecRandom,v);
     }
 
-    cout<<"Running...";
+    cout<<endl<<"Running...";
 
     while (m--)
         match(Random,v);
 
-    printSpecialReport(v);
+    cout<<endl;
+    if (spec_n)
+        printSpecialReport(v);
+
     printRangedDistribution(v);
+
+    system("pause");
 
     return 0;
 }
