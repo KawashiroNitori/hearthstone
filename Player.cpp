@@ -8,8 +8,8 @@ player::player() : __currcount(0),__winsum(0),__losesum(0),__power(0)
 {
     __id=++__amount;
     __special=false;
-	__wincount.pull_back(0);
-	__losecount.pull_back(0);
+	__wincount.push_back(0);
+	__losecount.push_back(0);
 }
 
 player::player(long double power) : __currcount(0),__winsum(0),__losesum(0)
@@ -17,8 +17,8 @@ player::player(long double power) : __currcount(0),__winsum(0),__losesum(0)
     __id=++__amount;
     __power=power;
     __special=false;
-	__wincount.pull_back(0);
-	__losecount.pull_back(0);
+	__wincount.push_back(0);
+	__losecount.push_back(0);
 }
 
 player::player(bool special,long double power) : __currcount(0),__winsum(0),__losesum(0)
@@ -26,8 +26,8 @@ player::player(bool special,long double power) : __currcount(0),__winsum(0),__lo
     __id=++__amount;
     __power=power;
     __special=special;
-	__wincount.pull_back(0);
-	__losecount.pull_back(0);
+	__wincount.push_back(0);
+	__losecount.push_back(0);
 }
 
 void player::Win()

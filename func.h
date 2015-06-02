@@ -2,13 +2,14 @@
 #define FUNC_H_INCLUDED
 
 #include <vector>
+#include "Randomizer.h"
 using namespace std;
 
 void setParament();
-void generateUniformDistribution(randomizer& Random,vector<player> &v);
-void generateGaussianDistribution(randomizer& Random,vector<player> &v);
-void generateSpecialPlayer(randomizer& Random,vector<player> &v);
-void match(randomizer& Random,vector<player> &v);
+void generateUniformDistribution(randomizer &Random,vector<player> &v);
+void generateGaussianDistribution(randomizer &Random,vector<player> &v);
+void generateSpecialPlayer(randomizer &Random,vector<player> &v);
+void match(randomizer &Random,vector<player> &v);
 void printSpecialReport(vector<player> &v);
 void printRangedDistribution(vector<player> &v);
 

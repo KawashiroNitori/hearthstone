@@ -2,6 +2,7 @@
 #define RANDOMIZER_H_INCLUDED
 
 #include <random>
+using namespace std;
 
 class randomizer
 {
@@ -11,7 +12,7 @@ private:
 	uniform_int_distribution<unsigned> __u_int;
 	uniform_real_distribution<long double> __u_real;
 	normal_distribution<long double> __nor;
-	mt19937_64 __e; 
+	mt19937_64 __e;
 	void __setRandomSeed();
 public:
 	randomizer();
@@ -20,8 +21,7 @@ public:
 	unsigned getUniformInt();
 	long double getUniformReal();
 	long double getNormalReal();
-	int getShuffle(int i)
+    unsigned operator()(int i);
+};
 
-}
-
-#endif 
+#endif

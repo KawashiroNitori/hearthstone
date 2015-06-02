@@ -1,24 +1,25 @@
 #include <iostream>
 #include <random>
+#include <ctime>
+#include "Randomizer.h"
 using namespace std;
 
 int randomizer::__offset=0;
 
-void randomizer::__setRandomSeed() : __rd,__e(rd()+(++__offset)) {}
 
-randomizer::randomizer() : __u_int(0,0xffffffff),__u_real(0,1),__nor(0.5,0.1) 
+randomizer::randomizer() : __rd(),__e(time(NULL)),__u_int(0,0xffffffff),__u_real(0,1),__nor(0.5,0.1)
 {
-	__setRandomSeed();
+	//__setRandomSeed();
 }
 
 randomizer::randomizer(double aveg,double stddev) : __u_int(0,0xffffffff),__u_real(0,1),__nor(aveg,stddev)
 {
-	__setRandomSeed();
+	//__setRandomSeed();
 }
 
-randomizer::randomizer(unsigned Min,unsigned Max) : __u_int(Min,Max),__u_real(0,1),__nor(0.5,0,1)
+randomizer::randomizer(unsigned Min,unsigned Max) : __u_int(Min,Max),__u_real(0,1),__nor(0.5,0.1)
 {
-	__setRandomSeed();
+	//__setRandomSeed();
 }
 
 unsigned randomizer::getUniformInt()
@@ -36,9 +37,7 @@ long double randomizer::getNormalReal()
 	return __nor(__e);
 }
 
-int randomizer::getShuffle(int i)
+unsigned randomizer::operator()(int i)
 {
-	return getUniformInt()%player::getPlayerAmount();
+    return getUniformInt()%i;
 }
-
-

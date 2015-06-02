@@ -8,29 +8,35 @@
 #include "Randomizer.h"
 using namespace std;
 
-void generateUniformDistribution(randomizer& Random,vector<player> &v)
+void generateUniformDistribution(randomizer &Random,vector<player> &v)
 {
-	player tempPlayer=new player(Random.getUniformReal());
+	player* tempPlayerPtr=new player(Random.getUniformReal());
+	player tempPlayer=*tempPlayerPtr;
+	delete(tempPlayerPtr);
 	v.push_back(tempPlayer);
 }
 
-void generateGaussianDistribution(randomizer& Random,vector<player> &v)
+void generateGaussianDistribution(randomizer &Random,vector<player> &v)
 {
-	player tempPlayer=new player(Random.getNormalReal());
+	player* tempPlayerPtr=new player(Random.getNormalReal());
+	player tempPlayer=*tempPlayerPtr;
+	delete(tempPlayerPtr);
 	v.push_back(tempPlayer);
 }
 
 void generateSpecialPlayer(randomizer &Random,vector<player> &v)
 {
-	player tempPlayer=new player(true,Random.getNormalReal());
+	player* tempPlayerPtr=new player(true,Random.getNormalReal());
+	player tempPlayer=*tempPlayerPtr;
+	delete(tempPlayerPtr);
 	v.push_back(tempPlayer);
 }
 
-void match(randomizer& Random,vector<player> &v)
+void match(randomizer &Random,vector<player> &v)
 {
     int s;
     vector<player> g[12][3];
-    random_shuffle(v.begin(),v.end(),Random.getShuffle);
+    random_shuffle(v.begin(),v.end(),Random());
 
     g[0][0]=v;
     for (int i=0;i<12;i++)
