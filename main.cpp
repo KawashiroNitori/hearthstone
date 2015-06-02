@@ -66,6 +66,8 @@ int main()
 
     printRangedDistribution(v);
 
+    for (unsigned i=0;i<v.size();i++)
+        delete(v[i]);
     system("pause");
 
     return 0;
