@@ -5,7 +5,6 @@
 #include "Randomizer.h"
 using namespace std;
 
-void setParament();
 int getShuffle(int i);
 void generateUniformDistribution(randomizer &Random,vector<player> &v);
 void generateGaussianDistribution(randomizer &Random,vector<player> &v);
