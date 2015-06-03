@@ -61,7 +61,9 @@ int main()
     while (m--)
         match(Random,v);
 
+    sort(v.begin(),v.end(),sortByDown);
     cout<<endl;
+
     if (spec_n)
         printSpecialReport(v);
 

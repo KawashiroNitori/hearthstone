@@ -32,7 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="src/Player/core/Player.cpp" />
+		<Unit filename="src/Player/include/Player.h" />
+		<Unit filename="src/Randomizer/core/Randomizer.cpp" />
+		<Unit filename="src/Randomizer/include/Randomizer.h" />
+		<Unit filename="src/func/core/func.cpp" />
+		<Unit filename="src/func/include/func.h" />
+		<Unit filename="src/main/core/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

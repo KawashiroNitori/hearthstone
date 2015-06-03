@@ -106,6 +106,16 @@ long double player::getPower()
     return __power;
 }
 
+long double player::getAverageWinRate()
+{
+    return (long double)__winsum/(__winsum+__losesum);
+}
+
+long double player::getAverageWinCount()
+{
+    return (long double)__winsum/getGameCount();
+}
+
 void player::countUpdate()
 {
     ++__currcount;

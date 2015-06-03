@@ -32,6 +32,8 @@ public:
     int getTotalWin();
     int getTotalLose();
     long double getPower();
+    long double getAverageWinRate();
+    long double getAverageWinCount();
     void countUpdate();
     void printInfo();
     bool isSpecial();

@@ -14,6 +14,11 @@ int getShuffle(int i)
     return Random.getUniformInt()%i;
 }
 
+bool sortByDown(player* Player1,player* Player2)
+{
+    return Player1->getAverageWinCount() > Player2->getAverageWinCount();
+}
+
 void generateUniformDistribution(randomizer &Random,vector<player*> &v)
 {
 	player* tempPlayer=new player(Random.getUniformReal());
@@ -84,6 +89,7 @@ void printSpecialReport(vector<player*> &v)
     int spec_n=0,j;
     int speccount[13];
     double percent;
+    long double winRateSum=0,winCountSum=0;
 
     memset(speccount,0,sizeof(speccount));
     for (unsigned i=0;i<v.size();i++)
@@ -92,6 +98,8 @@ void printSpecialReport(vector<player*> &v)
             spec_n++;
             for (int j=0;j<v[i]->getGameCount();j++)
                 speccount[v[i]->getWinCount(j)]++;
+            winRateSum+=v[i]->getAverageWinRate();
+            winCountSum+=v[i]->getAverageWinCount();
         }
 
     cout<<endl<<"Special report in "<<v[0]->getGameCount()*spec_n<<" times:"<<endl;
@@ -108,6 +116,8 @@ void printSpecialReport(vector<player*> &v)
         cout<<'|';
         cout<<speccount[i]<<" times,"<<percent<<'%'<<endl;
     }
+    cout<<"Average Win count="<<winCountSum/spec_n<<endl;
+    cout<<"Average Win Rate="<<winRateSum/spec_n<<endl;
     cout<<endl;
 }
 
@@ -129,12 +139,12 @@ void printRangedDistribution(vector<player*> &v)
         psum=0;
         for (unsigned i=0;i<v.size();i++)
         {
-            p=(long double)v[i]->getTotalWin()/v[i]->getGameCount();
+            p=v[i]->getAverageWinCount();//均胜场数
             if (p>=minlim && p<=maxlim)
             {
                 select_n++;
                 powersum+=v[i]->getPower();
-                psum+=(long double)v[i]->getTotalWin()/(v[i]->getTotalWin()+v[i]->getTotalLose());
+                psum+=v[i]->getAverageWinRate();//平均胜率
             }
         }
         cout<<"\nP="<<psum/select_n<<"\nPower="<<powersum/select_n<<endl<<endl;
