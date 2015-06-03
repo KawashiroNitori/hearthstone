@@ -35,3 +35,9 @@
 	<iostream>
 	"../include/Player.h"
 
+1433300907 source:d:\programs\2014\hearthstone\src\randomizer\core\randomizer.cpp
+	<iostream>
+	<random>
+	<ctime>
+	"../include/Randomizer.h"
+

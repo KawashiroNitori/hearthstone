@@ -12,7 +12,7 @@ using namespace std;
 int main()
 {
     int n,m,mode,spec_n;
-    double stddev,spec_aver,spec_std;
+    double stdaver,stddev,spec_aver,spec_std;
     vector<player*> v;
     cout<<"Input normal amount and repeat times:"<<endl;
     cin>>n>>m;
@@ -21,17 +21,18 @@ int main()
     switch (mode)
     {
     case 1:
+        stdaver=0.5;
         break;
     case 2:
-        cout<<"Input the standard deviation:"<<endl;
-        cin>>stddev;
+        cout<<"Input the average and standard deviation:"<<endl;
+        cin>>stdaver>>stddev;
         break;
     default:
         cout<<"Error mode."<<endl;
         system("pause");
         return 0;
     };
-    randomizer Random(0.5,stddev);
+    randomizer Random(stdaver,stddev);
     switch (mode)
     {
     case 1:

@@ -17,21 +17,21 @@ int getShuffle(int i)
 void generateUniformDistribution(randomizer &Random,vector<player*> &v)
 {
 	player* tempPlayer=new player(Random.getUniformReal());
-	tempPlayer->printInfo();
+	//tempPlayer->printInfo();
 	v.push_back(tempPlayer);
 }
 
 void generateGaussianDistribution(randomizer &Random,vector<player*> &v)
 {
 	player* tempPlayer=new player(Random.getNormalReal());
-	tempPlayer->printInfo();
+	//tempPlayer->printInfo();
 	v.push_back(tempPlayer);
 }
 
 void generateSpecialPlayer(randomizer &Random,vector<player*> &v)
 {
 	player* tempPlayer=new player(true,Random.getNormalReal());
-	tempPlayer->printInfo();
+	//tempPlayer->printInfo();
 	v.push_back(tempPlayer);
 }
 
