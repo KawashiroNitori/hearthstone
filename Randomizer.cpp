@@ -34,6 +34,10 @@ long double randomizer::getUniformReal()
 
 long double randomizer::getNormalReal()
 {
-	return __nor(__e);
+	long double target;
+	do
+        target=__nor(__e);
+    while (target>1 || target<0);
+    return target;
 }
 

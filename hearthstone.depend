@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1433248132 source:d:\programs\2014\hearthstone\main.cpp
+1433249144 source:d:\programs\2014\hearthstone\main.cpp
 	<iostream>
 	<vector>
 	<random>
@@ -35,7 +35,7 @@
 1433225104 d:\programs\2014\hearthstone\randomizer.h
 	<random>
 
-1433224861 source:d:\programs\2014\hearthstone\randomizer.cpp
+1433299094 source:d:\programs\2014\hearthstone\randomizer.cpp
 	<iostream>
 	<random>
 	<ctime>
