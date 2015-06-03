@@ -1,5 +1,6 @@
 #include <vector>
-#include "Player.h"
+#include <iostream>
+#include "../include/Player.h"
 using namespace std;
 
 int player::__amount=0;
@@ -8,8 +9,8 @@ player::player() : __currcount(0),__winsum(0),__losesum(0),__power(0)
 {
     __id=++__amount;
     __special=false;
-	__wincount.pull_back(0);
-	__losecount.pull_back(0);
+	__wincount.push_back(0);
+	__losecount.push_back(0);
 }
 
 player::player(long double power) : __currcount(0),__winsum(0),__losesum(0)
@@ -17,8 +18,8 @@ player::player(long double power) : __currcount(0),__winsum(0),__losesum(0)
     __id=++__amount;
     __power=power;
     __special=false;
-	__wincount.pull_back(0);
-	__losecount.pull_back(0);
+	__wincount.push_back(0);
+	__losecount.push_back(0);
 }
 
 player::player(bool special,long double power) : __currcount(0),__winsum(0),__losesum(0)
@@ -26,20 +27,24 @@ player::player(bool special,long double power) : __currcount(0),__winsum(0),__lo
     __id=++__amount;
     __power=power;
     __special=special;
-	__wincount.pull_back(0);
-	__losecount.pull_back(0);
+	__wincount.push_back(0);
+	__losecount.push_back(0);
 }
 
 void player::Win()
 {
     __wincount[__currcount]++;
     __winsum++;
+    if (__wincount[__currcount]==12)
+        countUpdate();
 }
 
 void player::Lose()
 {
     __losecount[__currcount]++;
     __losesum++;
+    if (__losecount[__currcount]==3)
+        countUpdate();
 }
 
 int player::getPlayerAmount()
@@ -54,7 +59,10 @@ int player::getID()
 
 int player::getGameCount()
 {
-    return __currcount+1;
+    if (__wincount[__currcount] || __losecount[__currcount])
+        return __currcount+1;
+    else
+        return __currcount;
 }
 
 int player::getWinCount()
@@ -103,6 +111,11 @@ void player::countUpdate()
     ++__currcount;
     __wincount.push_back(0);
     __losecount.push_back(0);
+}
+
+void player::printInfo()
+{
+    //cout<<__id<<' '<<__power<<' '<<__special<<endl;
 }
 
 bool player::isSpecial()

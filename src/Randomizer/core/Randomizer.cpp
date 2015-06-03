@@ -1,7 +1,7 @@
 #include <iostream>
 #include <random>
 #include <ctime>
-#include "Randomizer.h"
+#include "../include/Randomizer.h"
 using namespace std;
 
 int randomizer::__offset=0;

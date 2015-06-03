@@ -4,9 +4,9 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
-#include "Player.h"
-#include "func.h"
-#include "Randomizer.h"
+#include "../../Player/include/Player.h"
+#include "../../func/include/func.h"
+#include "../../Randomizer/include/Randomizer.h"
 using namespace std;
 
 int main()

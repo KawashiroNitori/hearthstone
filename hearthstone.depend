@@ -1,43 +1,37 @@
 # depslib dependency file v1.0
-1433249144 source:d:\programs\2014\hearthstone\main.cpp
-	<iostream>
-	<vector>
-	<random>
-	<algorithm>
-	<ctime>
-	<cstdlib>
-	"Player.h"
-	"func.h"
-	"Randomizer.h"
-
-1433244793 d:\programs\2014\hearthstone\player.h
-	<vector>
-
-1433247205 source:d:\programs\2014\hearthstone\player.cpp
-	<vector>
-	<iostream>
-	"Player.h"
-
-1433247986 source:d:\programs\2014\hearthstone\func.cpp
+1433300859 source:d:\programs\2014\hearthstone\src\func\core\func.cpp
 	<vector>
 	<random>
 	<iostream>
 	<ctime>
 	<cstring>
 	<algorithm>
-	"Player.h"
-	"Randomizer.h"
+	"../../Player/include/Player.h"
+	"../../Randomizer/include/Randomizer.h"
 
-1433244629 d:\programs\2014\hearthstone\func.h
+1433244793 d:\programs\2014\hearthstone\src\player\include\player.h
 	<vector>
-	"Randomizer.h"
 
-1433225104 d:\programs\2014\hearthstone\randomizer.h
+1433225104 d:\programs\2014\hearthstone\src\randomizer\include\randomizer.h
 	<random>
 
-1433299094 source:d:\programs\2014\hearthstone\randomizer.cpp
+1433300890 source:d:\programs\2014\hearthstone\src\main\core\main.cpp
 	<iostream>
+	<vector>
 	<random>
+	<algorithm>
 	<ctime>
-	"Randomizer.h"
+	<cstdlib>
+	"../../Player/include/Player.h"
+	"../../func/include/func.h"
+	"../../Randomizer/include/Randomizer.h"
+
+1433300868 d:\programs\2014\hearthstone\src\func\include\func.h
+	<vector>
+	"../../Randomizer/include/Randomizer.h"
+
+1433300900 source:d:\programs\2014\hearthstone\src\player\core\player.cpp
+	<vector>
+	<iostream>
+	"../include/Player.h"
 

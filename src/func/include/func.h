@@ -2,7 +2,7 @@
 #define FUNC_H_INCLUDED
 
 #include <vector>
-#include "Randomizer.h"
+#include "../../Randomizer/include/Randomizer.h"
 using namespace std;
 
 int getShuffle(int i);

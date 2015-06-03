@@ -4,8 +4,8 @@
 #include <ctime>
 #include <cstring>
 #include <algorithm>
-#include "Player.h"
-#include "Randomizer.h"
+#include "../../Player/include/Player.h"
+#include "../../Randomizer/include/Randomizer.h"
 using namespace std;
 
 int getShuffle(int i)
