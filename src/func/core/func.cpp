@@ -89,7 +89,7 @@ void printSpecialReport(vector<player*> &v)
     int spec_n=0,j;
     int speccount[13];
     double percent;
-    long double winRateSum=0,winCountSum=0;
+    long double winRateSum=0;
 
     memset(speccount,0,sizeof(speccount));
     for (unsigned i=0;i<v.size();i++)
@@ -99,7 +99,6 @@ void printSpecialReport(vector<player*> &v)
             for (int j=0;j<v[i]->getGameCount();j++)
                 speccount[v[i]->getWinCount(j)]++;
             winRateSum+=v[i]->getAverageWinRate();
-            winCountSum+=v[i]->getAverageWinCount();
         }
 
     cout<<endl<<"Special report in "<<v[0]->getGameCount()*spec_n<<" times:"<<endl;
@@ -116,7 +115,6 @@ void printSpecialReport(vector<player*> &v)
         cout<<'|';
         cout<<speccount[i]<<" times,"<<percent<<'%'<<endl;
     }
-    cout<<"Average Win count="<<winCountSum/spec_n<<endl;
     cout<<"Average Win Rate="<<winRateSum/spec_n<<endl;
     cout<<endl;
 }
@@ -148,6 +146,25 @@ void printRangedDistribution(vector<player*> &v)
             }
         }
         cout<<"\nP="<<psum/select_n<<"\nPower="<<powersum/select_n<<endl<<endl;
+    }
+    cout<<endl;
+}
+
+void printRankedWinCount(vector<player*> &v)
+{
+    int playerRank,se=0;
+    while (++se)
+    {
+        cout<<"Section "<<se<<":Input the player's rank("<<v.size()<<" Total,input -1 to quit):"<<endl;
+        cin>>playerRank;
+        if (playerRank==-1)
+            break;
+        if (playerRank<1 || playerRank>(int)v.size())
+        {
+            cout<<"Error input."<<endl<<endl;
+            continue;
+        }
+        cout<<'#'<<playerRank<<" player's average win count="<<v[playerRank-1]->getAverageWinCount()<<endl<<endl;
     }
     cout<<endl;
 }
