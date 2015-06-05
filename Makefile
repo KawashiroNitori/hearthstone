@@ -1,0 +1,31 @@
+hearthstone:obj/main.o \
+			obj/Player.o \
+			obj/Randomizer.o \
+			obj/func.o 
+	cc -o hearthstone obj/main.o \
+					  obj/Player.o \
+					  obj/Randomizer.o \
+					  obj/func.o
+
+obj/main.o:src/main/core/main.cpp \
+	   src/Player/include/Player.h \
+	   src/Randomizer/include/Randomizer.h \
+	   src/func/include/func.h
+	cc -std=c++11 -c src/main/core/main.cpp -o obj/main.o
+
+obj/Player.o:src/Player/core/Player.cpp \
+		 src/Player/include/Player.h 
+	cc -std=c++11 -c src/Player/core/Player.cpp -o obj/Player.o
+
+obj/Randomizer.o:src/Randomizer/core/Randomizer.cpp \
+			 src/Randomizer/include/Randomizer.h
+	cc -std=c++11 -c src/Randomizer/core/Randomizer.cpp -o obj/Randomizer.o
+
+obj/func.o:src/func/core/func.cpp \
+	   src/func/include/func.h \
+	   src/Player/include/Player.h \
+	   src/Randomizer/include/Randomizer.h
+	cc -std=c++11 -c src/func/core/func.cpp -o obj/func.o
+
+clean:
+	rm hearthstone main.o Player.o Randomizer.o func.o
