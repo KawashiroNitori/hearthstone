@@ -2,7 +2,7 @@ hearthstone:obj/main.o \
 			obj/Player.o \
 			obj/Randomizer.o \
 			obj/func.o 
-	g++ -o bin/hearthstone obj/main.o obj/Player.o obj/Randomizer.o obj/func.o
+	cc -o bin/hearthstone obj/main.o obj/Player.o obj/Randomizer.o obj/func.o
 
 obj/main.o:src/main/core/main.cpp \
 	   src/Player/include/Player.h \
