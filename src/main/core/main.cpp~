@@ -66,7 +66,7 @@ int main()
 			{
 				cout<<"Input the average:"<<endl;
 				cin>>spec_aver;
-				chooseSpecialPlayer(spec_aver,v);
+				chooseSpecialPlayer(spec_n,spec_aver,v);
 			}
 		}
     }

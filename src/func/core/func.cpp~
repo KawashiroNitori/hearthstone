@@ -43,12 +43,14 @@ void generateSpecialPlayer(randomizer &Random,vector<player*> &v)
 
 void chooseSpecialPlayer(int spec_n,double aver,vector<player*> &v)
 {
+	cout<<"Choosing..."<<endl;
 	double target;
 	int size=v.size();
+
 	vector<double> f(size+10,-0xffff);
 	vector<vector<bool> > path(size+10,vector<bool>(size+10,false));
 	for (int i=0;i<size;i++)
-		for (int j=size;j>=1;j--)
+		for (int j=spec_n;j>=1;j--)
 		{
 			target=(f[j-1]*(j-1)+v[i]->getPower())/j;
 			if (abs(f[j]-aver) > abs(target-aver))
@@ -57,23 +59,20 @@ void chooseSpecialPlayer(int spec_n,double aver,vector<player*> &v)
 				path[i][j]=true;
 			}
 		}
-	for (int i=0;i<size;i++)
-		cout<<i<<':'<<v[i]->getPower()<<endl;
-	cout<<endl;
-	cout<<f[spec_n]<<endl;
-	int i=size,j=spec_n;
+	int i=v.size(),j=spec_n;
 	double sum=0;
-	while (i>0)
+	while (i>=0)
 	{
 		if (path[i][j])
 		{
-			cout<<v[i]->getPower()<<endl;
 			sum+=v[i]->getPower();
+			v[i]->setSpecial(true);
 			j--;
 		}
 		i--;
 	}
-	cout<<sum/spec_n<<endl;
+	//cout<<sum/spec_n<<endl;
+	cout<<"Choose complete.\nTarget power average="<<aver<<endl<<"Real power average="<<f[spec_n]<<endl;
 }
 
 void match(randomizer &Random,vector<player*> &v)
@@ -200,7 +199,11 @@ void printRankedWinCount(vector<player*> &v)
             cout<<"Error input."<<endl<<endl;
             continue;
         }
-        cout<<'#'<<playerRank<<" player's average win count="<<v[playerRank-1]->getAverageWinCount()<<endl<<endl;
+		cout<<'#'<<playerRank<<" player's information:";
+		if (v[playerRank-1]->isSpecial())
+			cout<<"(Special)";
+        cout<<endl<<"Average win count="<<v[playerRank-1]->getAverageWinCount()<<endl;
+		cout<<"Power="<<v[playerRank-1]->getPower()<<endl<<endl;
     }
     cout<<endl;
 }
