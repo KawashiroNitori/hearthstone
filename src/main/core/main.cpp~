@@ -54,20 +54,16 @@ int main()
 		switch (mode)
 		{
 			case 1:
-			{
 				cout<<"Input the average and standard deviation:"<<endl;
-				cin>>spec_aver>>spec_std;
+				cin>>spec_aver>>apec_std;
 				randomizer specRandom(spec_aver,spec_std);
 				for (int i=1;i<=spec_n;i++)
 					generateSpecialPlayer(specRandom,v);
 				break;
-			}
 			case 2:
-			{
 				cout<<"Input the average:"<<endl;
 				cin>>spec_aver;
 				chooseSpecialPlayer(spec_aver,v);
-			}
 		}
     }
 

@@ -9,7 +9,6 @@ int getShuffle(int i);
 bool sortByDown(player* Player1,player* Player2);
 void generateUniformDistribution(randomizer &Random,vector<player*> &v);
 void generateGaussianDistribution(randomizer &Random,vector<player*> &v);
-void chooseSpecialPlayer(double aver,vector<player*> &v);
 void generateSpecialPlayer(randomizer &Random,vector<player*> &v);
 void match(randomizer &Random,vector<player*> &v);
 void printSpecialReport(vector<player*> &v);

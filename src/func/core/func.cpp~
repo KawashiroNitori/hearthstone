@@ -40,7 +40,7 @@ void generateSpecialPlayer(randomizer &Random,vector<player*> &v)
 	v.push_back(tempPlayer);
 }
 
-void chooseSpecialPlayer(double aver,vector<player*> &v)
+void chooseSpecialPlayer(double aver,const vector<player*> &v)
 {
 	vector<double> f(v.size()+10,-0xffff);
 	for (int i=1;i<=v.size();i++)
