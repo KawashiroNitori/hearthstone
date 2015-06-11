@@ -1,6 +1,7 @@
 #include <vector>
 #include <random>
 #include <iostream>
+#include <cmath>
 #include <ctime>
 #include <cstring>
 #include <algorithm>
@@ -42,11 +43,25 @@ void generateSpecialPlayer(randomizer &Random,vector<player*> &v)
 
 void chooseSpecialPlayer(double aver,vector<player*> &v)
 {
-	vector<double> f(v.size()+10,-0xffff);
-	for (int i=1;i<=v.size();i++)
-		for (int j=v.size();j>=1;j--)
-			f[j]=abs(f[j]-aver)<abs(f[j-1]+v[i]->getPower()-2*aver)?f[j]:((f[j-1]*(j-1)+v[i]->getPower())/j);
-	
+	int size=v.size();
+	vector<double> f(size+10,-0xffff);
+	vector<vector<bool> > path(size+10,vector<bool>(size+10,false));
+	for (int i=0;i<size;i++)
+		for (int j=size;j>=1;j--)
+			if (abs(f[j]-aver)>abs(((f[j-1]*(j-1)+v[i]->getPower())/j)-aver))
+			{
+				f[j]=(f[j-1]*(j-1)+v[i]->getPower())/j;
+				path[i][j]=true;
+			}
+	double sum=0;
+	for (int i=1;i<=size;i++)
+	{
+		sum+=v[i-1]->getPower();
+		cout<<i<<':'<<f[i]<<endl;
+	}
+	cout<<sum/size<<endl;
+	for (int i=0;i<size;i++)
+		cout<<i<<':'<<v[i]->getPower()<<endl;
 }
 
 void match(randomizer &Random,vector<player*> &v)
