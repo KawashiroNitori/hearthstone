@@ -133,11 +133,6 @@ bool player::isSpecial()
     return __special;
 }
 
-void player::setSpecial(bool special)
-{
-	__special=special;
-}
-
 long double player::getWinRate(player& a, player& b)
 {
     return a.getPower()*(1-b.getPower())/(a.getPower()+b.getPower()-2*a.getPower()*b.getPower());

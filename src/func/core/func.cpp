@@ -41,27 +41,39 @@ void generateSpecialPlayer(randomizer &Random,vector<player*> &v)
 	v.push_back(tempPlayer);
 }
 
-void chooseSpecialPlayer(double aver,vector<player*> &v)
+void chooseSpecialPlayer(int spec_n,double aver,vector<player*> &v)
 {
+	double target;
 	int size=v.size();
 	vector<double> f(size+10,-0xffff);
 	vector<vector<bool> > path(size+10,vector<bool>(size+10,false));
 	for (int i=0;i<size;i++)
 		for (int j=size;j>=1;j--)
-			if (abs(f[j]-aver)>abs(((f[j-1]*(j-1)+v[i]->getPower())/j)-aver))
+		{
+			target=(f[j-1]*(j-1)+v[i]->getPower())/j;
+			if (abs(f[j]-aver) > abs(target-aver))
 			{
-				f[j]=(f[j-1]*(j-1)+v[i]->getPower())/j;
+				f[j]=target;
 				path[i][j]=true;
 			}
-	double sum=0;
-	for (int i=1;i<=size;i++)
-	{
-		sum+=v[i-1]->getPower();
-		cout<<i<<':'<<f[i]<<endl;
-	}
-	cout<<sum/size<<endl;
+		}
 	for (int i=0;i<size;i++)
 		cout<<i<<':'<<v[i]->getPower()<<endl;
+	cout<<endl;
+	cout<<f[spec_n]<<endl;
+	int i=v.size(),j=spec_n;
+	double sum=0;
+	while (i>=0)
+	{
+		if (path[i][j])
+		{
+			cout<<v[i]->getPower()<<endl;
+			sum+=v[i]->getPower();
+			j--;
+		}
+		i--;
+	}
+	cout<<sum/spec_n<<endl;
 }
 
 void match(randomizer &Random,vector<player*> &v)

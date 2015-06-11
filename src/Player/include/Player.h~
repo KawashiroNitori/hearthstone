@@ -36,7 +36,6 @@ public:
     long double getAverageWinCount();
     void countUpdate();
     void printInfo();
-	void setSpecial(bool special);
     bool isSpecial();
     static long double getWinRate(player& a,player& b);
 };
