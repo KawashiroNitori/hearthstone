@@ -44,3 +44,8 @@ Temporary Items
 
 # vim swap file
 *.swp
+*~
+
+#object&binary folder
+/obj/
+/bin/
